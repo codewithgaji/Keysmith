@@ -14,8 +14,9 @@ Clone the repository
 bash
 Copy code
 git clone https://github.com/@codewithgaji/Password-Generator.git
-cd Password-Generator
+cd Password-Generator, 
 Run the program
+
 Execute the Python file:
 bash
 Copy code
@@ -24,7 +25,7 @@ Test it Out on Google Colab,
 
 You can quickly test and run this project in Google Colab without installation by clicking https://colab.research.google.com/drive/1A7XVyELjWx03F7zeQiFY_ufgX-CcFYY0?usp=sharing.
 
-License
+License: 
 This project is licensed under the MIT License.
 
 Contributions, issues, and feature requests are welcome! Feel free to check the issues page if you’d like to collaborate.
