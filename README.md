@@ -13,7 +13,7 @@ Usage:
 Clone the repository
 bash
 Copy code
-git clone https://github.com/@codewithgaji/Password-Generator.git
+git clone https://github.com/codewithgaji/Password-Generator?tab=readme-ov-file
 cd Password-Generator, 
 Run the program
 
