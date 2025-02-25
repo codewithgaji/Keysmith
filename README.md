@@ -21,7 +21,9 @@ Execute the Python file:
 bash
 Copy code
 python "Password Generator by Gaji.py"
+
 Test it Out on Google Colab, 
+You can quickly test and run this project in Google Colab without installation by clicking [here](https://colab.research.google.com/drive/1A7XVyELjWx03F7zeQiFY_ufgX-CcFYY0?usp=sharing.)
 
 
 License: 
