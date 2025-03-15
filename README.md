@@ -13,7 +13,7 @@ Usage:
 Clone the repository
 bash
 Copy code
-git clone https://github.com/codewithgaji/Password-Generator?tab=readme-ov-file
+git clone [here](https://github.com/codewithgaji/Password-Generator?tab=readme-ov-file)
 cd Password-Generator, 
 Run the program
 
@@ -29,4 +29,3 @@ You can quickly test and run this project in Google Colab without installation b
 License: 
 This project is licensed under the MIT License.
 
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page if you’d like to collaborate.
