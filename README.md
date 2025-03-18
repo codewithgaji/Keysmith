@@ -26,7 +26,3 @@ Test it Out on Google Colab,
 You can quickly test and run this project in Google Colab without installation by clicking [here](https://colab.research.google.com/drive/1A7XVyELjWx03F7zeQiFY_ufgX-CcFYY0?usp=sharing.)
 
 
-License: 
-This project is licensed under the MIT License.
-
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page if you’d like to collaborate.
