@@ -8,6 +8,6 @@ services:
       - key: DJANGO_SETTINGS_MODULE
         value: keysmith.settings
       - key: SECRET_KEY
-        value: your-secret-key-here
+        value: V~iOxA`SJ?5&|Zq+]ovSf_V<yGai_'56\%I80!%tfTNr:mhfe+
       - key: DEBUG
         value: "False"
