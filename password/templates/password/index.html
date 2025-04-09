@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keysmith - Password Generator</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link rel="icon" href="{% static 'images/Keysmith-new.png' %}" type="image/png">
+
+  <style>
+    body {
+      background-image: url("{% static 'images/Home.png' %}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav {
+      width: 100%;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: flex-end;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      background: rgba(30, 41, 59, 0.85);
+      color: white;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 1s ease, transform 1s ease;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .profile-img.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    input[type="number"] {
+      padding: 8px;
+      border-radius: 4px;
+      border: none;
+      width: 100%;
+      max-width: 200px;
+      margin: 10px 0;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #38bdf8;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #output-box {
+      margin-top: 20px;
+      background: #1e293b;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav {
+        justify-content: center;
+        padding: 10px 0;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .profile-img {
+        position: static;
+        margin-bottom: 15px;
+      }
+
+      footer {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <ul class="footer-nav">
+      <li><a href="{% url 'About' %}">About</a></li>
+      <li><a href="{% url 'Home' %}">Home</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <!-- Profile image with animation -->
+    <a href="https://x.com/codewithgaji">
+      <img src="{% static 'images/profile.jpg' %}" alt="Your Profile" class="profile-img" id="profile-img">
+    </a>
+
+    <!-- Logo and Header -->
+    <img src="{% static 'images/Keysmith-new.png' %}" alt="Keysmith Logo" width="80">
+    <h1>🔐 Keysmith</h1>
+    <p>Generate strong, secure passwords in one click</p>
+
+    <!-- Input -->
+    <label for="length">Password Length:</label>
+    <input type="number" id="length" min="4" max="100" value="12">
+
+    <!-- Buttons -->
+    <div class="button-container">
+      <button onclick="generatePassword()">Generate</button>
+      <button id="copy-btn" onclick="copyPassword()" style="display: none;">Copy</button>
+    </div>
+
+    <!-- Output -->
+    <div id="output-box">
+      <p id="password-display">Your password will appear here</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Keysmith. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Generate password
+    function generatePassword() {
+      const length = document.getElementById("length").value;
+      fetch(`/generate-password/?length=${length}`)
+        .then(response => response.json())
+        .then(data => {
+          const output = document.getElementById("password-display");
+          if (data.password) {
+            output.textContent = data.password;
+            document.getElementById("copy-btn").style.display = "inline-block";
+          } else {
+            output.textContent = data.error;
+          }
+        })
+        .catch(() => {
+          document.getElementById("password-display").textContent = "Something went wrong.";
+        });
+    }
+
+    // Allow Enter key to trigger generation
+    document.getElementById("length").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        generatePassword();
+      }
+    });
+
+    // Copy to clipboard
+    function copyPassword() {
+      const passwordText = document.getElementById("password-display").textContent;
+      navigator.clipboard.writeText(passwordText)
+        .then(() => alert('Password copied to clipboard!'))
+        .catch(err => alert('Failed to copy password: ' + err));
+    }
+
+    // Animate profile image on load
+    document.addEventListener("DOMContentLoaded", function () {
+      const profileImg = document.getElementById('profile-img');
+      setTimeout(() => {
+        profileImg.classList.add('visible');
+      }, 300);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+/* body {
+  font-family: Arial, sans-serif;
+  background-color: #0f172a;
+  color: #f1f5f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+} */
+
+body {
+  background-image: url("{% static 'images/Home.png' %}"); /* Use your Canvas image */
+  background-size: cover; /* Makes the background cover the entire page */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the background from repeating */
+  height: 100vh; /* Full viewport height */
+  margin: 0;                                                                                                                                                    
+}
+
+.container {
+  background-color: #1e293b;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+label {
+  display: block;
+  margin: 20px 0 5px;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #38bdf8;
+  color: #0f172a;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0ea5e9;
+}
+
+#output-box {
+  margin-top: 20px;
+  background-color: #334155;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+#password-display {
+  font-weight: bold;
+  word-wrap: break-word;
+}
+
+/* Flexbox for side-by-side buttons */
+.button-container {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#copy-btn {
+  display: none; /* Initially hidden until password is generated */
+}
+
+/* Styling for the image */
+img {
+  margin-bottom: 20px;
+}
+

@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Keysmith</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link rel="icon" href="{% static 'images/Keysmith-new.png' %}" type="image/png">
+  <style>
+    /* Background and layout settings */
+    body {
+      background-image: url("{% static 'images/About.png' %}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      position: relative;
+    }
+    .about-container {
+      max-width: 800px;
+      margin: 80px auto; /* Puts the content a bit down from the top */
+      padding: 20px;
+      background: rgba(1, 17, 43, 0.85);
+      color: #f1f5f9;
+      border-radius: 8px;
+      text-align: left;
+    }
+    .about-container h1 {
+      margin-top: 0;
+    }
+    .about-container p {
+      margin: 20px 0; /* Spacing between paragraphs */
+    }
+    .about-nav {
+      margin-bottom: 20px;
+    }
+    .about-nav a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    /* Elements with typing effect start hidden */
+    .typing {
+      opacity: 0;
+    }
+
+
+    .profile-img {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 1s ease, transform 1s ease;
+  z-index: 10;
+}
+
+.profile-img.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+  </style>
+</head>
+<body>
+  <div class="about-container">
+    <nav class="about-nav">
+      <a href="{% url 'Home' %}">&larr; Back to Home</a>
+    </nav>
+    <img src="{% static 'images/profile.jpg' %}" alt="Your Profile" class="profile-img">
+
+    <!-- Use data-text attributes to store the full text for the typewriter effect -->
+    <h1 class="typing" data-text="About Keysmith"></h1>
+    <p class="typing" data-text="Keysmith is designed to provide simple, secure, and fast password generation to help you stay safe online. My mission is to ensure that you always have a strong, unique password available for all your online accounts."></p>
+    <p class="typing" data-text="I built Keysmith with both security and simplicity in mind, ensuring a user-friendly experience without compromising on performance. Whether you need a random password for your social media, bank account, or any online service, Keysmith has got you covered."></p>
+  </div>
+
+  <script>
+    // Typewriter function that types text one character at a time
+    function typeWriter(element, text, speed, callback) {
+      element.textContent = ""; // Clear the existing text
+      element.style.opacity = 1; // Make sure the element is visible
+      let i = 0;
+      (function type() {
+        if (i < text.length) {
+          element.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        } else if (callback) {
+          callback();
+        }
+      })();
+    }
+
+    // Function to process all "typing" elements sequentially
+    function typeElementsSequentially(elements, index, speed) {
+      if (index < elements.length) {
+        const element = elements[index];
+        const fullText = element.getAttribute('data-text');
+        typeWriter(element, fullText, speed, function() {
+          // Wait 300ms before starting the next element's typing
+          setTimeout(function() {
+            typeElementsSequentially(elements, index + 1, speed);
+          }, 300);
+        });
+      }
+    }
+
+    // Start the typewriter effect when the DOM is ready
+    document.addEventListener("DOMContentLoaded", function() {
+      const typingElements = document.querySelectorAll(".typing");
+      // Start sequential typing with a typing speed of 70ms per character
+      typeElementsSequentially(typingElements, 0, 35);
+    });
+    
+    // Show the profile image with animation
+const profileImg = document.querySelector('.profile-img');
+setTimeout(() => {
+  profileImg.classList.add('visible');
+}, 300); // delay to match typewriter start
+
+  </script>
+</body>
+</html>
