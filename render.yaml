@@ -3,8 +3,8 @@ services:
     name: keysmith
     env: python
     buildCommand: |
-      pip install --upgrade pip
-      pip install -r requirements.txt
-      python manage.py migrate
+      pip install --upgrade pip && \
+      pip install -r requirements.txt && \
+      python manage.py migrate && \
       python manage.py collectstatic --noinput
     startCommand: gunicorn keysmith.wsgi:application --bind 0.0.0.0:$PORT
