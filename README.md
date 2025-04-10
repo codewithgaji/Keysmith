@@ -1,5 +1,5 @@
 <p float="left">
-  <img src="Keysmith-new.png" width="500" />
+  <img src="Keysmith-new.png" width="250" />
 </p>
 
 
