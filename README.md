@@ -10,13 +10,13 @@ Features:
 3) Securely shuffles character order to avoid predictable patterns
 
 Usage:
-Keysmith now has a functioning Website to generate Strong and secure passwords of any length. Try it out [here]()
-Clone the repository
-bash
-Copy code
-git clone [here](https://github.com/codewithgaji/Password-Generator?tab=readme-ov-file)
-cd Password-Generator, 
-Run the program
+Keysmith now has a functioning Website to generate Strong and Secure passwords of any length. Try it out [here](https://keysmith.onrender.com/)
+- Clone the repository
+- bash
+- Copy code
+- git clone [here](https://github.com/codewithgaji/Password-Generator?tab=readme-ov-file)
+- cd Password-Generator, 
+- Run the program
 
 Execute the Python file:
 bash
