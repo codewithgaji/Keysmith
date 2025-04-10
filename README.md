@@ -1,4 +1,4 @@
-# Password-Generator by Gaji
+# Keysmith
 A simple and customizable password generator in Python that creates secure passwords with a mix of letters, numbers, and special characters.
 
 Project Overview: 
@@ -10,6 +10,7 @@ Features:
 3) Securely shuffles character order to avoid predictable patterns
 
 Usage:
+Keysmith now has a functioning Website to generate Strong and secure passwords of any length. Try it out [here]()
 Clone the repository
 bash
 Copy code
